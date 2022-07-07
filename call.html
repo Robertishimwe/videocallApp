@@ -211,7 +211,7 @@
         peer.on("call", function (call) {
             console.log(">>>>>>>>>",phone);
             const oop = document.getElementById("mee").innerText;
-            me.innerText += `${oop + call.peer}`;
+            me.innerText = `${oop + call.peer}`;
             // me.innerText += `Your device ID is: ${call.peer}`;
            
             if (window.confirm("Do you want to accept this call?")) {
@@ -239,7 +239,7 @@ const sendCall = ()=>{
     getStreamCode();
     const call = peer.call(code, mystream); // A
     const oop = document.getElementById("mee").innerText;
-            me.innerText += `${oop + code}`;
+            me.innerText = `${oop + code}`;
 
 call.on('stream', function(stream) { // B
     remoteVideo.srcObject = stream; // C
