@@ -1,4 +1,162 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OnlyUs</title>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <!-- Global CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+    />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css" />
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css" />
+    <!-- GitHub Button -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body data-spy="scroll">
+    <!---//Facebook button code-->
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+
+    <!-- ******HEADER****** -->
+    <header id="header" class="header">
+      <nav id="main-nav" class="main-nav navbar navbar-expand-md">
+        <div class="container-fluid">
+          <a class="navbar-brand logo scrollto" href="#promo">
+            <span class="logo-title">OnlyUs</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar-collapse"
+            aria-controls="navbar-collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span></button
+          ><!--//nav-toggle-->
+
+          <div class="navbar-collapse collapse" id="navbar-collapse">
+            <ul id="nav-menu" class="nav navbar-nav ms-md-auto">
+              <li class="nav-item sr-only">
+                <a class="nav-link scrollto" href="#promo">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#features">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#docs">Docs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link scrollto" href="#license">License</a>
+              </li>
+              <li class="nav-item last">
+                <a class="nav-link scrollto" href="#contact">Contact</a>
+              </li>
+            </ul>
+            <!--//nav-->
+          </div>
+          <!--//navabr-collapse-->
+        </div>
+      </nav>
+      <!--//main-nav-->
+    </header>
+    <!--//header-->
+
+    <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header">
+      <div class="container text-center">
+        <h2 class="title">Only<span class="highlight">Us</span></h2>
+        <p class="intro">
+          Keep in Touch with your Loved Ones &
+          run your meetings smoothly with zero setup.
+        </p>
+        <div class="btns">
+
+            <input type="text" id="phone" class="btn btn-cta-secondary" placeholder="Enter your phone number">
+          <!-- <a
+            class="btn btn-cta-secondary"
+            href="https://themes.3rdwavemedia.com/"
+            target="_blank"
+            >Demo</a
+          > -->
+          <a class="btn btn-cta-primary" onclick="save()">CONTINUE</a>
+        
+          
+        </div>
+
+    <!-- Javascript -->
+    <script>
+      const save = () => {
+        var phone = document.getElementById("phone").value;
+        localStorage.setItem("phone", phone);
+        location.replace("call.html");
+      };
+      const phone = localStorage.getItem("phone");
+      // if (phone !== null) {
+      //   location.replace("call.html");
+      // }
+    </script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,9 +170,52 @@
         align-items: center;
         height: 100vh;
       }
+      body {
+        font-family: Helvetica;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      .site-header {
+        border-bottom: 1px solid #ccc;
+        padding: 0.5em 1em;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .site-identity h1 {
+        font-size: 1.5em;
+        margin: 0.6em 0;
+        display: inline-block;
+      }
+
+      .site-navigation ul,
+      .site-navigation li {
+        margin: 0;
+        padding: 0;
+      }
+
+      .site-navigation li {
+        display: inline-block;
+        margin: 1.4em 1em 1em 1em;
+      }
     </style>
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-identity">
+        <h1><a href="#">Site Name</a></h1>
+      </div>
+      <nav class="site-navigation">
+        <ul class="nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
     <div class="container">
       <div>
         <label for="phone">Enter you phone number: </label><br />
@@ -34,4 +235,4 @@
       }
     </script>
   </body>
-</html>
+</html> -->

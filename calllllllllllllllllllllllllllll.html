@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
+    <title>Document</title>
+    <style>
+        /* body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(31, 82, 193);
+        } */
+        #remoteVideo {
+            width: 100%;
+            height: 40vh;
+            border: 9px solid rgb(90, 17, 62);
+
+        }
+        #myvideo {
+            width: 100%;
+            height: 40vh;
+            border: 9px solid green;
+        }
+        #video-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 3px solid yellow;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h4 id="me"></h4>
+      <div id="video-container">
+        <video id="myvideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+      </div>
+      <div id="controls">
+        <!-- <button id="startButton" onclick="getLocalStream()">Start</button> -->
+        <!-- <button id="enternumberButton" onclick="getStreamCode()">Enter number</button> -->
+        <button id="callButton" onclick="sendCall()">Call</button>
+        <!-- <button id="hangupButton">Hang Up</button> -->
+      </div>
+
+    <script>
+   //geting my id
+   var phone = localStorage.getItem("phone");
+
+   if(phone == null || phone == "" || phone == undefined){
+    location.replace("index.html");
+     location.replace("index.html");
+   }
+   
+   var remoteVideo = document.getElementById('remoteVideo');
+      var mystream;
+
+    var peer = new Peer(`${phone}`); 
+
+    setTimeout(function(){
+        // var myid = peer.id;
+        console.log(peer.id);
+    },5000);
+      peer.on("open", function () {
+        me.innerText = `Your device ID is: ${peer.id}`;
+      });
+        peer.on("call", function (call) {
+            console.log(">>>>>>>>>",phone);
+            console.log(call);
+            if (window.confirm("Do you want to accept this call?")) {
+               
+            call.answer(mystream);
+            call.on("stream", function (stream) {
+            remoteVideo.srcObject = stream;
+            });
+        }
+        });
+//entering call reciver id
+   let code;
+   let conn;
+   function getStreamCode() {
+    code = window.prompt('Please enter the sharing code');
+    conn = peer.connect(code);
+    peer.on('connection', function(connection){
+    conn = connection;
+});
+
+  }
+
+  // send call
+const sendCall = ()=>{
+    getStreamCode();
+    const call = peer.call(code, mystream); // A
+
+call.on('stream', function(stream) { // B
+    remoteVideo.srcObject = stream; // C
+    remoteVideo.autoplay = true; // D
+    window.peerStream = stream; //E
+    showConnectedContent(); //F    });
+})
+}
+
+//answer a call
+
+
+  /// declaring variables
+
+      me = document.getElementById("me");
+
+      
+
+      //video access
+
+
+        navigator.mediaDevices
+          .getUserMedia({ video: true, audio: true })
+          .then((stream) => {
+            var video = document.getElementsByTagName("video")[0];
+            mystream = stream; // A
+            video.srcObject = stream; // B
+            video.addEventListener("loadedmetadata", () => {
+              video.play();
+            });
+            video.muted = true;
+
+            console.log(stream);
+          })
+          .catch((err) => {
+            console.log("u got an error:" + err);
+          });
+      
+
+    </script>
+  </body>
+</html>
