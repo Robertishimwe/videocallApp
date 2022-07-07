@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
+    <title>Document</title>
+    <style>
+        #remoteVideo {
+            width: 50%;
+            height: 100%;
+            border: 9px solid rgb(90, 17, 62);
+
+        }
+        #myvideo {
+            width: 50%;
+            height: 100%;
+            border: 9px solid green;
+        }
+        #video-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h4 id="me"></h4>
+      <div id="video-container">
+        <video id="myvideo" autoplay></video>
+        <video id="remoteVideo" autoplay></video>
+      </div>
+      <div id="controls">
+        <button id="startButton" onclick="getLocalStream()">Start</button>
+        <button id="enternumberButton" onclick="getStreamCode()">Enter number</button>
+        <button id="callButton" onclick="sendCall()">Call</button>
+        <button id="hangupButton">Hang Up</button>
+      </div>
+
+    <script>
+   //geting my id
+   var remoteVideo = document.getElementById('remoteVideo');
+      var mystream;
+      var peer = new Peer();
+      peer.on("open", function () {
+        me.innerText = `Your device ID is: ${peer.id}`;
+      });
+        peer.on("call", function (call) {
+            call.answer(mystream);
+            call.on("stream", function (stream) {
+            remoteVideo.srcObject = stream;
+            });
+        });
+//entering call reciver id
+   let code;
+   let conn;
+   function getStreamCode() {
+    code = window.prompt('Please enter the sharing code');
+    conn = peer.connect(code);
+    peer.on('connection', function(connection){
+    conn = connection;
+});
+console.log(">>>>>connection<<<<<<<<", conn);
+    alert(`You entered ${conn}`);
+  }
+
+  // send call
+const sendCall = ()=>{
+    getStreamCode();
+    const call = peer.call(code, mystream); // A
+
+call.on('stream', function(stream) { // B
+    remoteVideo.srcObject = stream; // C
+    remoteVideo.autoplay = true; // D
+    window.peerStream = stream; //E
+    showConnectedContent(); //F    });
+})
+}
+
+//answer a call
+
+
+  /// declaring variables
+    //   var callButton = document.getElementById("callButton");
+      me = document.getElementById("me");
+
+      
+
+      //video access
+
+      function getLocalStream() {
+        navigator.mediaDevices
+          .getUserMedia({ video: true, audio: true })
+          .then((stream) => {
+            // var video = document.createElement("video");
+            var video = document.getElementsByTagName("video")[0];
+            mystream = stream; // A
+            video.srcObject = stream; // B
+            video.addEventListener("loadedmetadata", () => {
+              video.play();
+            });
+
+            // video.append("body");
+            // window.localAudio.autoplay = true; // C
+            console.log(stream);
+          })
+          .catch((err) => {
+            console.log("u got an error:" + err);
+          });
+      
+      }
+
+      //get id
+
+    </script>
+  </body>
+</html>
