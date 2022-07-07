@@ -101,6 +101,7 @@ call.on('stream', function(stream) { // B
             video.addEventListener("loadedmetadata", () => {
               video.play();
             });
+            video.muted = true;
 
             // video.append("body");
             // window.localAudio.autoplay = true; // C
