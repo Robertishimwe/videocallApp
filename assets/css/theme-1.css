@@ -712,6 +712,9 @@ pre code {
     position: absolute;
     background: #fff;
   }
+  #phone {
+    width: 100%;
+  }
   .header .main-nav .navbar-collapse .navbar-nav {
     margin-left: 10px;
   }
