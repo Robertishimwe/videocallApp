@@ -1,0 +1,90 @@
+@media (max-width: 767px) {
+  .header .main-nav .navbar-collapse {
+    border-top: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    left: 0;
+    top: 60px;
+    position: absolute;
+    background: #fff;
+  }
+  .container {
+    display: flex !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 90vh !important;
+    flex-direction: column !important;
+    border: 2px solid #0f2cac !important;
+  }
+  /* .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: rgb(31, 82, 193);
+  } */
+  .headerIcon {
+    display: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+  }
+
+  .mywing {
+    display: block;
+    object-fit: cover !important;
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+  }
+  .otherwing {
+    display: block;
+    object-fit: cover !important;
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+  }
+  #myvideo {
+    display: block;
+    width: 100% !important;
+    object-fit: cover !important;
+    z-index: -100;
+    height: 100% !important;
+    /* display: none; */
+    /* width: fit-content;
+    */
+
+    /* border: 9px solid green; */
+  }
+  #remoteVideo {
+    display: block !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    z-index: -100;
+    height: 100% !important;
+    /* display: none;
+    width: fit-content;
+    height: 100%; */
+  }
+  .promo {
+    display: block;
+    width: 100%;
+    margin: 0px;
+  }
+  .navbar {
+    display: block;
+  }
+  #callButton {
+    display: block;
+    margin: 0 auto;
+  }
+  /* section {
+    display: block;
+  }
+  .offset-header {
+    display: block;
+  } */
+}
